@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const ejsLayouts = require("express-ejs-layouts");
 const dotenv = require("dotenv/config");
+const moviesRoutes = require("./routes/movies.routes");
 
 app.set("view engine", "ejs");
 app.use(ejsLayouts);
@@ -14,6 +15,8 @@ mongoose.connect(
     console.log("connected to mongoDB");
   }
 );
+
+app.use("/movies", moviesRoutes);
 
 app.get("/about", (req, res) => {
   res.render("about");
