@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Movies = require("../model/Movie");
+const Genres = require("../model/Genre");
 
 router.post("/", (req, res) => {
   let movie = new Movies({
@@ -10,6 +11,12 @@ router.post("/", (req, res) => {
   });
 
   res.send("ok");
+});
+
+router.get("/create", (req, res) => {
+  Genres.find().then((genres) => {
+    res.render("movie/create", { genres });
+  });
 });
 
 router.get("/", (req, res) => {

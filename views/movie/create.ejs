@@ -1,0 +1,7 @@
+<select>
+ <% genres.forEach((genre) => { %>
+ <h4> <%= genre.name %> </h4>
+ <option value="<%= genre._id %>"><%= genre.name %> </option>
+ <% }) %>
+
+</select>
