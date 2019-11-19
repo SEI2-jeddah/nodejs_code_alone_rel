@@ -4,12 +4,14 @@ const Movies = require("../model/Movie");
 
 // router.post();
 
-router.get("/ms", (res, ebere) => {
-  ebere.send("o_____o");
-});
-
-router.get("/m", (req, res) => {
-  res.send("m ___ok");
+router.get("/", (req, res) => {
+  Movies.find()
+    .then((movies) => {
+      res.render("movie");
+    })
+    .catch((err) => {
+      res.json({ error: err });
+    });
 });
 
 module.exports = router;
