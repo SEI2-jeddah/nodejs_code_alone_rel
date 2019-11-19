@@ -19,7 +19,7 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-app.get("/contact", async (req, res) => {
+app.get("/movies", async (req, res) => {
   res.render("contact");
 });
 
