@@ -1,20 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const Movies = require("../model/Movie");
+const Genre = require("../model/Genre");
 
-router.post("/", (req, res) => {
-  let movie = new Movies({
-    description: req.body.description,
-    title: req.body.title,
-    rating: 3
+router.post("/create", (req, res) => {
+  let genre = new Genre({
+    name: req.body.name
   });
 
   res.send("ok");
 });
 
+//show create form
+router.get("/create", (req, res) => {
+  res.render("genre/create");
+});
+
 router.get("/", (req, res) => {
-  Movies.find()
-    .then((movies) => {
+  Genre.find()
+    .then((genres) => {
       res.render("movie/index");
     })
     .catch((err) => {

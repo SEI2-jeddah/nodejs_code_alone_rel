@@ -12,10 +12,12 @@ const movieSchema = new Schema(
     rating: {
       type: Number
     },
-    genres: {
-      type: Schema.Types.ObjectId,
-      ref: "Genres"
-    }
+    genres: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Genres"
+      }
+    ]
   },
   { timestamps: true }
 );
