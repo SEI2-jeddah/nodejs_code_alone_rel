@@ -6,6 +6,9 @@ const dotenv = require("dotenv/config");
 const moviesRoutes = require("./routes/movies.routes");
 const genreRoutes = require("./routes/genre.routes");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.set("view engine", "ejs");
 app.use(ejsLayouts);
 

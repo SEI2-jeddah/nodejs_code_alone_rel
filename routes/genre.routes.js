@@ -7,7 +7,16 @@ router.post("/create", (req, res) => {
     name: req.body.name
   });
 
-  res.send("ok");
+  genre
+    .save()
+    .then(() => {
+      res.redirect("/genres");
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+
+  // res.send("ok");
 });
 
 //show create form
@@ -18,7 +27,7 @@ router.get("/create", (req, res) => {
 router.get("/", (req, res) => {
   Genre.find()
     .then((genres) => {
-      res.render("movie/index");
+      res.render("genre/index", { genres });
     })
     .catch((err) => {
       res.json({ error: err });
