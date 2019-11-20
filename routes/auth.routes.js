@@ -31,4 +31,9 @@ router.get("/login", (req, res) => {
 });
 router.post("/login", (req, res) => {});
 
+router.get("/user", (req, res) => {
+  User.find().then((user) => {
+    console.log(user[0].fullname());
+  });
+});
 module.exports = router;
