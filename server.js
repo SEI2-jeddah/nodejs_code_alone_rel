@@ -21,6 +21,8 @@ mongoose.connect(
   }
 );
 
+mongoose.set("useCreateIndex", true);
+
 app.use("/movies", moviesRoutes);
 app.use("/genres", genreRoutes);
 app.use("/auth", authRoutes);

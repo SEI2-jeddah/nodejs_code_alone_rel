@@ -16,7 +16,14 @@ router.post("/register", (req, res) => {
     email: req.body.email
   });
 
-  user.save();
+  user
+    .save()
+    .then(() => {
+      res.redirect("/auth/login");
+    })
+    .catch(() => {
+      res.redirect("/404");
+    });
 });
 
 router.get("/login", (req, res) => {
