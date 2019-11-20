@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const userSchema = new Schema(
   {
@@ -11,11 +13,26 @@ const userSchema = new Schema(
     },
     password: String,
     email: {
-      type: Number
+      type: String,
+      unique: true
     }
   },
   { timestamps: true }
 );
+
+userSchema.pre("save", function(next) {
+  let user = this;
+  if (user.password && user.isModified()) {
+    bcrypt
+      .hash(user.password, saltRounds)
+      .then(function(hash) {
+        // Store hash in your password DB.
+        user.password = hash;
+        next();
+      })
+      .catch((err) => console.log(err));
+  }
+});
 
 const Users = mongoose.model("Users", userSchema);
 module.exports = Users;
