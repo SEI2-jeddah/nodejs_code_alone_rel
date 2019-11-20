@@ -5,6 +5,7 @@ const ejsLayouts = require("express-ejs-layouts");
 const dotenv = require("dotenv/config");
 const moviesRoutes = require("./routes/movies.routes");
 const genreRoutes = require("./routes/genre.routes");
+const authRoutes = require("./routes/auth.routes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,14 +23,7 @@ mongoose.connect(
 
 app.use("/movies", moviesRoutes);
 app.use("/genres", genreRoutes);
-
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-
-app.get("/movies", async (req, res) => {
-  res.render("contact");
-});
+app.use("/auth", authRoutes);
 
 app.get("*", (req, res) => {
   res.render("404");
