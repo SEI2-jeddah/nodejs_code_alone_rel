@@ -10,7 +10,7 @@
   "author": "ebere <eiweala@live.com>",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.3",
     "express": "^4.17.1",
